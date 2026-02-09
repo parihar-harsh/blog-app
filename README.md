@@ -35,24 +35,24 @@ A full-stack blogging platform built with modern web technologies. This applicat
 
 ```
 .
-├── backend/              # Cloudflare Workers backend
+├── backend/              
 │   ├── src/
-│   │   ├── index.ts     # Entry point
-│   │   └── routes/      # API routes
-│   ├── prisma/          # Database schema and migrations
-│   └── wrangler.toml    # Cloudflare Workers configuration
+│   │   ├── index.ts    
+│   │   └── routes/     
+│   ├── prisma/         
+│   └── wrangler.toml    
 │
-├── frontend/            # React frontend
+├── frontend/           
 │   ├── src/
-│   │   ├── components/  # Reusable UI components
-│   │   ├── pages/       # Page components
-│   │   ├── hooks/       # Custom React hooks
-│   │   └── config.ts    # Configuration
+│   │   ├── components/  
+│   │   ├── pages/       
+│   │   ├── hooks/      
+│   │   └── config.ts    
 │   └── public/
 │
-└── common/              # Shared validation schemas
+└── common/             
     └── src/
-        └── index.ts     # Zod schemas
+        └── index.ts    
 ```
 
 ## 🚦 Getting Started
@@ -75,15 +75,15 @@ A full-stack blogging platform built with modern web technologies. This applicat
 2. **Install dependencies for all packages**
 
    ```bash
-   # Install backend dependencies
+   
    cd backend
    npm install
 
-   # Install frontend dependencies
+ 
    cd ../frontend
    npm install
 
-   # Install common package dependencies
+
    cd ../common
    npm install
    ```
@@ -92,7 +92,6 @@ A full-stack blogging platform built with modern web technologies. This applicat
 
    ```bash
    cd backend
-   # Update the DATABASE_URL in wrangler.toml or .env
    npx prisma migrate dev
    ```
 
@@ -141,7 +140,6 @@ npm run deploy
 ```bash
 cd frontend
 npm run build
-# Deploy the dist folder to your hosting platform
 ```
 
 ## 🔑 API Endpoints
