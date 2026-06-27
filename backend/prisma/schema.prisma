@@ -9,18 +9,24 @@ datasource db {
 }
 
 model User {
-  id  Int    @id @default(autoincrement())
-  name    String?
-  username String @unique
-  password String
-  blogs    Blog[]
+  id        Int      @id @default(autoincrement())
+  name      String?
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  blogs     Blog[]
 }
 
 model Blog {
-  id  Int    @id @default(autoincrement())
-  authorId   Int
-  content    String
-  title       String
+  id        Int      @id @default(autoincrement())
+  authorId  Int
+  content   String
+  title     String
   published Boolean  @default(false)
-  author    User @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([published, id])
+  @@index([authorId, id])
 }

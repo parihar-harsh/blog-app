@@ -1,18 +1,22 @@
 name = "medium-blogapp"
 compatibility_date = "2023-12-01"
 
-[vars]
-DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiOGZiZWY2ZDAtYTdmNy00ODk1LThmNGQtZjAyNTM4NmM4MDI5IiwidGVuYW50X2lkIjoiZDg2MDZhYjgxMTQzMTAxMzA2M2EwZjM3Mjg1ODhlZDZiOGQ1Y2VlMjYyYTM4ZWM4NTE1NGQ5OWJmYWI3MzM5NSIsImludGVybmFsX3NlY3JldCI6IjA2MmQ2OGJmLWNmNjEtNDYwMC1hYzhiLTVmY2Y0MjBkNDJhNSJ9.3Z5N5CfSjaPjKzV2-CdHlzIwG0hYlVHBfBoUFoVi2e4"
-JWT_SECRET = "harsh@123"
-# [[kv_namespaces]]
-# binding = "MY_KV_NAMESPACE"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# Configure runtime values without committing them:
+#   npx wrangler secret put DATABASE_URL
+#   npx wrangler secret put JWT_SECRET
 
-# [[r2_buckets]]
-# binding = "MY_BUCKET"
-# bucket_name = "my-bucket"
+[[ratelimits]]
+name = "AUTH_RATE_LIMITER"
+namespace_id = "1001"
 
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "my-database"
-# database_id = ""
+  [ratelimits.simple]
+  limit = 20
+  period = 60
+
+[[ratelimits]]
+name = "WRITE_RATE_LIMITER"
+namespace_id = "1002"
+
+  [ratelimits.simple]
+  limit = 30
+  period = 60
